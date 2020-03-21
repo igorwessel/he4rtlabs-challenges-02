@@ -8,6 +8,5 @@ let features = [
   }
 ];
 
-alert("He4rtDevs <3");
 
 // Dica: faça o layout e depois pense em como vai funcionar o script.

@@ -1,0 +1,12 @@
+const logoPath = anime.path('.header-logo-path path')
+
+anime({
+    targets: 'path',
+    width: '200px',
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: 'easeInOutSine',
+    duration: 1500,
+    delay: function(el, i) { return i * 250 },
+    direction: 'alternate',
+    loop: true
+  });
