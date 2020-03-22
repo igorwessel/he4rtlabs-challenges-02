@@ -68,7 +68,7 @@
       <main>
         <div class="main-actions-container">
           <div class="main-buttons-container">
-            <button id="btn-add-feature" class="btn">Adicionar</button>
+            <button id="btn-open-modal-features" class="btn">Adicionar</button>
             <button id="btn-remove-feature" class="btn">Apagar</button>
             <button id="btn-import-features" class="btn">
               Importar
@@ -101,6 +101,12 @@
                 <td>123</td>
                 <td>500</td>
               </tr>
+              <tr>
+                <td>blabla</td>
+                <td>123</td>
+                <td>123</td>
+                <td>500</td>
+              </tr>
               <!-- vai entrar aqui o contéudo as features -->
             </tbody>
           </table>
@@ -112,6 +118,22 @@
           <span>Valor total: </span>
         </div>
       </main>
+      <div class="modal-add-feature">
+        <div class="modal-content">
+          <form>
+            <h3>Adicionar Funcionalidade</h3>
+            <label for="input-funcionality">Funcionalidade</label>
+            <input type="text" id="input-funcionality" onkeypress="return isNumber(event)">
+            <label for="input-dev-time">Horas Dev</label>
+            <input type="text" id="input-dev-time" onkeypress="return isNumber(event)">
+            <label for="input-test-time">Horas Teste</label>
+            <input type="text" id="input-test-time" onkeypress="return isNumber(event)">
+            <label for="input-funcionality-value">Valor</label>
+            <input type="text" id="input-funcionality-value" onkeypress="return isNumber(event)">
+            <button id="btn-add-funcionality">Adicionar</button>
+          </form>
+        </div>
+      </div>
       <footer>
         <span>desenvolvido por <span class="signature"> igor wessel</span></span>
         <a href="https://github.com/igorwessel" target="blank"><img src="assets/images/GitHub-Mark-Light-32px.png" alt="github-logo" width="100%"></a>

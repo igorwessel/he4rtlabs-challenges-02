@@ -11,6 +11,21 @@ let features = [
 
 // Dica: faça o layout e depois pense em como vai funcionar o script.
 
+
+const modalAddFeature = document.querySelector('.modal-add-feature')
+const btnOpenModal = document.querySelector('#btn-open-modal-features')
+
+btnOpenModal.addEventListener('click', () => {
+  modalAddFeature.style.display = 'block'
+})
+
+window.onclick = function(event) {
+  if (event.target == modalAddFeature) {
+    modalAddFeature.style.display = "none";
+  }
+}
+
+// utils functions
 function isNumber(event) {
   let keycode = event.keyCode;
   if (keycode > 47 && keycode < 59) {
