@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 :root{
     --logo-color: #9163cc;
     --font-primary-color: #ffffff;
-    --font-purple-dark: #55387c;
+    --purple-light: #e9d7ff;
+    --purple-dark: #55387c;
+    --border-grey-opacity-50: rgba(114, 114, 114, 0.363);
 }
 
 *{
@@ -16,6 +20,7 @@
     flex-direction: column;
     align-items: center;
     color: var(--font-primary-color);
+    font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -48,12 +53,17 @@ header {
     max-width: 150px;
 }
 
+.header-logo-img img:hover {
+    cursor: pointer;
+}
+
 .header-logo-typography h1{
     position: relative;
-    bottom: 3px;
+    bottom: 1px;
     display: none;
     padding-left: 15px;
     align-self: center;
+    font-weight: normal;
     font-size: 1.3em;
 }
 
@@ -75,6 +85,16 @@ footer a img {
     max-width: 32px;
 }
 
+footer span {
+    align-self: center;
+    font-size: .9em;
+}
+
+footer .signature {
+    font-weight: bolder;
+    color: var(--purple-light)
+}
+
 
 main {
     display: grid;
@@ -83,22 +103,104 @@ main {
     height: 100%;
     max-width: 1000px;
     padding: 5px;
+    grid-template-rows: 100px 1fr;
+    gap: 5px;
     grid-template-areas: 
     'actions input'
-    'funcionality funcionality';
+    'list-features resume';
 }
 
-.actions-main{
+/* Defining style for action container */
+.main-actions-container{
     grid-area: actions;
-    background-color: red;
+    border: 2px solid var(--border-grey-opacity-50);
 }
 
-.two {
+.main-buttons-container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.btn {
+    padding: 15px;
+    color: white;
+    background-color: var(--logo-color);
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover{
+    background-color: var(--purple-dark);
+}
+
+
+.main-input {
     grid-area: input;
-    background-color: blue;
+    border: 2px solid var(--border-grey-opacity-50);
+    color: var(--purple-dark);
 }
 
-.three {
-    grid-area: funcionality;
-    background-color: chocolate;
+.main-input-container {
+    display: flex;
+    margin: 8px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-input-container input {
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 5px;
+    width: 90%;
+    outline: none;
+}
+
+/* Defining style for list */
+
+.main-list-features {
+    grid-area: list-features;
+    color: var(--purple-dark);
+    border: 2px solid var(--border-grey-opacity-50);
+}
+
+.main-list-features table {
+    border:0; 
+    border-collapse:separate; 
+    border-spacing:0 5px;
+    width: 100%;
+}
+
+.main-list-features table caption {
+    margin: 1%;
+    padding-bottom: .5%;
+    /* border-bottom: 1px solid var(--border-grey-opacity-50); */
+}
+
+.main-list-features table th {
+    height: 25px;
+    border-bottom: 1px solid var(--border-grey-opacity-50); 
+}
+
+.main-list-features table tbody {
+    text-align: center;
+}
+
+
+/* Style for card resume */
+
+.main-card-resume{
+    display: flex;
+    flex-direction: column;
+    grid-area: resume;
+    padding: 10px;
+    color: var(--purple-dark);
+    border: 2px solid var(--border-grey-opacity-50);
+}
+
+.main-card-resume span {
+    margin: 5px 25px;
 }

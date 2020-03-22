@@ -26,7 +26,7 @@ logo.add({
 }, '-=600').add({
   targets: '.header-logo-typography',
   width: '100%',
-  height: '98.31px'
+  height: '96.9844px'
 }, '-=600').add({
   targets: '.header-logo-typography h1',
   opacity: [.5, 1],
@@ -43,4 +43,31 @@ anime({
   easing: 'easeInOutSine',
   duration: 1000,
   delay: 2000
+})
+
+// Animate
+
+const headerHeartTypography = document.querySelector('.header-logo-img img')
+
+const scale = (element,scale, duration) => {
+  anime.remove(element)
+  anime({
+    targets: element,
+    scale: scale,
+    duration: duration
+  })
+}
+
+const scaleHeartTypography = () => {
+  scale(headerHeartTypography, 1.2, 1000)
+}
+
+const scaleToNormalHeartTypography = () => {
+  scale(headerHeartTypography, 1, 1000)
+}
+
+headerHeartTypography.addEventListener('mouseenter', scaleHeartTypography, false)
+headerHeartTypography.addEventListener('mouseleave', scaleToNormalHeartTypography, false)
+headerHeartTypography.addEventListener('click', (e) => {
+  open('https://labs.heartdevs.com')
 })

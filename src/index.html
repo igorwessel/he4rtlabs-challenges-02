@@ -66,18 +66,54 @@
         </div>
       </header>
       <main>
-        <div class="actions-main">
-          <div class="buttons">
-            <button>Adicionar</button>
-            <button>Apagar</button>
-            <button>Importar</button>
-            <button>Exportar</button>
+        <div class="main-actions-container">
+          <div class="main-buttons-container">
+            <button id="btn-add-feature" class="btn">Adicionar</button>
+            <button id="btn-remove-feature" class="btn">Apagar</button>
+            <button id="btn-import-features" class="btn">
+              Importar
+              <input type="file" name="import-features" id="import-features" style="display: none;">
+            </button>
+            <button id="btn-export-feature" class="btn">Exportar</button>
           </div>
         </div>
-        <div class="two">input</div>
-        <div class="three">total</div>
+        <div class="main-input">
+          <div class="main-input-container">
+            <span>Valor hora</span>
+            <input type="text" onkeypress="return isNumber(event)">
+          </div>
+        </div>
+        <div class="main-list-features">
+          <table>
+            <caption>Lista de desenvolvimento</caption>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Hora Dev</th>
+                <th>Hora Teste</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>blabla</td>
+                <td>123</td>
+                <td>123</td>
+                <td>500</td>
+              </tr>
+              <!-- vai entrar aqui o contéudo as features -->
+            </tbody>
+          </table>
+        </div>
+        <div class="main-card-resume">
+          <h2>Resumo</h2>
+          <span>Total Dev: </span>
+          <span>Total Teste: </span>
+          <span>Valor total: </span>
+        </div>
       </main>
       <footer>
+        <span>desenvolvido por <span class="signature"> igor wessel</span></span>
         <a href="https://github.com/igorwessel" target="blank"><img src="assets/images/GitHub-Mark-Light-32px.png" alt="github-logo" width="100%"></a>
         <a href="https://twitter.com/igor_wessel" target="blank"><img src="assets/images/Twitter_Social_Icon_Circle_White.png" alt="twitter-logo" width="100%"></a>
       </footer>
