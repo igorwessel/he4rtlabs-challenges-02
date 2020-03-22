@@ -5,7 +5,7 @@ const logo = anime.timeline({
 })
 
 logo.add({
-  targets: 'path',
+  targets: '.header-logo-path path',
   strokeDashoffset: [anime.setDashoffset, 0],
   fill: {
     value: '#9163cc',
@@ -15,15 +15,26 @@ logo.add({
   delay: function(el, i) { return i * 250 },
   direction: 'normal'
 }).add({
-  targets: 'path',
+  targets: '.header-logo-path path',
   fill: '#FFFFFF'
 }).add({
-  targets: 'svg',
+  targets: '.header-logo-path svg',
   width: '60px'
-}, 1500).add({
+}, 1500 ).add({
   targets: 'header',
   backgroundColor: '#9163cc'
-}, '-=600')
+}, '-=600').add({
+  targets: '.header-logo-typography',
+  width: '100%',
+  height: '98.31px'
+}, '-=600').add({
+  targets: '.header-logo-typography h1',
+  opacity: [.5, 1],
+  duration: 1000,
+  begin: () => {
+    document.querySelector('.header-logo-typography h1').style.display = 'block';
+  }
+}, '-=1000')
 
 // Show after logo animation finish
 anime({
