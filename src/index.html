@@ -60,7 +60,7 @@
         </div>
         <div class="header-logo-typography">
           <div class="header-logo-img">
-            <img src="/src/assets/images/heartdev-logo-white.png" alt="heartdev-logo">
+            <img src="./assets/images/heartdev-logo-white.png" alt="heartdev-logo">
           </div>
           <h1>Planilha de Freelas</h1>
         </div>
@@ -80,7 +80,7 @@
         <div class="main-input">
           <div class="main-input-container">
             <span>Valor hora</span>
-            <input type="text" onkeypress="return isNumber(event)">
+            <span>R$<input type="text" id='main-input-value-per-hour' onkeypress="return isNumber(event)"></span>
           </div>
         </div>
         <div class="main-list-features">
@@ -94,43 +94,30 @@
                 <th>Valor</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>blabla</td>
-                <td>123</td>
-                <td>123</td>
-                <td>500</td>
-              </tr>
-              <tr>
-                <td>blabla</td>
-                <td>123</td>
-                <td>123</td>
-                <td>500</td>
-              </tr>
-              <!-- vai entrar aqui o contéudo as features -->
+            <tbody id="main-list-features-table-body">
             </tbody>
           </table>
         </div>
         <div class="main-card-resume">
           <h2>Resumo</h2>
-          <span>Total Dev: </span>
-          <span>Total Teste: </span>
-          <span>Valor total: </span>
+          <ul>
+            <li>Total Dev: </li>
+            <li>Total Teste: </li>
+            <li>Valor Total: </li>
+          </ul>
         </div>
       </main>
       <div class="modal-add-feature">
-        <div class="modal-content">
-          <form>
+        <div class="modal-feature-content">
+          <form id="modal-feature-form" name="modal-feature-form">
             <h3>Adicionar Funcionalidade</h3>
-            <label for="input-funcionality">Funcionalidade</label>
-            <input type="text" id="input-funcionality" onkeypress="return isNumber(event)">
+            <label for="input-feature">Funcionalidade</label>
+            <input type="text" id="input-feature" name="feature">
             <label for="input-dev-time">Horas Dev</label>
-            <input type="text" id="input-dev-time" onkeypress="return isNumber(event)">
+            <input type="text" id="input-dev-time" name="devHours" onkeypress="return isNumber(event)">
             <label for="input-test-time">Horas Teste</label>
-            <input type="text" id="input-test-time" onkeypress="return isNumber(event)">
-            <label for="input-funcionality-value">Valor</label>
-            <input type="text" id="input-funcionality-value" onkeypress="return isNumber(event)">
-            <button id="btn-add-funcionality">Adicionar</button>
+            <input type="text" id="input-test-time" name="testHours" onkeypress="return isNumber(event)">
+            <button id="btn-add-feature" type="submit">Adicionar</button>
           </form>
         </div>
       </div>
