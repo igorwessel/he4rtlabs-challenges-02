@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>He4rtLabsChallenges</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
-  </head>
-  <body>
-    <!--
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>He4rtLabsChallenges</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+  <!--
         Link para nossa identidade visual
         https://imgur.com/a/WXy7lwN
 
         Animação do logo termina de renderizar o logo, diminuir para ficar no header!
         width="0.846667in" height="0.606667in" svg <--
     -->
-    <div class="container">
-      <header>
-        <div class="header-logo-heart">
-          <div class="header-logo-path">
-            <svg xmlns="http://www.w3.org/2000/svg" width='600px' viewBox="0 0 254 182">
-              <path id="Seleção"
-                    fill="none" stroke="#9163cc" stroke-width="1"
-                    d="M 83.00,126.00
+  <div class="container">
+    <header>
+      <div class="header-logo-heart">
+        <div class="header-logo-path">
+          <svg xmlns="http://www.w3.org/2000/svg" width='600px' viewBox="0 0 254 182">
+            <path id="heart" fill="none" stroke="#9163cc" stroke-width="1" d="M 83.00,126.00
                     C 83.00,126.00 107.00,103.00 107.00,103.00
                     107.00,103.00 150.00,60.00 150.00,60.00
                     150.00,60.00 170.00,40.00 170.00,40.00
@@ -55,80 +55,83 @@
                     195.93,51.34 181.48,67.66 175.00,73.99
                     172.82,76.11 165.93,82.99 163.00,82.96
                     159.93,82.92 156.69,78.23 155.00,76.00 Z" />
-            </svg>
-          </div>
-        </div>
-        <div class="header-logo-typography">
-          <div class="header-logo-img">
-            <img src="./assets/images/heartdev-logo-white.png" alt="heartdev-logo">
-          </div>
-          <h1>Planilha de Freelas</h1>
-        </div>
-      </header>
-      <main>
-        <div class="main-actions-container">
-          <div class="main-buttons-container">
-            <button id="btn-open-modal-features" class="btn">Adicionar</button>
-            <button id="btn-remove-feature" class="btn">Apagar</button>
-            <button id="btn-import-features" class="btn">
-              Importar
-              <input type="file" name="import-features" id="import-features" style="display: none;">
-            </button>
-            <button id="btn-export-feature" class="btn">Exportar</button>
-          </div>
-        </div>
-        <div class="main-input">
-          <div class="main-input-container">
-            <span>Valor hora</span>
-            <span>R$<input type="text" id='main-input-value-per-hour' onkeypress="return isNumber(event)"></span>
-          </div>
-        </div>
-        <div class="main-list-features">
-          <table>
-            <caption>Lista de desenvolvimento</caption>
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>Hora Dev</th>
-                <th>Hora Teste</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody id="main-list-features-table-body">
-            </tbody>
-          </table>
-        </div>
-        <div class="main-card-resume">
-          <h2>Resumo</h2>
-          <ul>
-            <li>Total Dev: </li>
-            <li>Total Teste: </li>
-            <li>Valor Total: </li>
-          </ul>
-        </div>
-      </main>
-      <div class="modal-add-feature">
-        <div class="modal-feature-content">
-          <form id="modal-feature-form" name="modal-feature-form">
-            <h3>Adicionar Funcionalidade</h3>
-            <label for="input-feature">Funcionalidade</label>
-            <input type="text" id="input-feature" name="feature">
-            <label for="input-dev-time">Horas Dev</label>
-            <input type="text" id="input-dev-time" name="devHours" onkeypress="return isNumber(event)">
-            <label for="input-test-time">Horas Teste</label>
-            <input type="text" id="input-test-time" name="testHours" onkeypress="return isNumber(event)">
-            <button id="btn-add-feature" type="submit">Adicionar</button>
-          </form>
+          </svg>
         </div>
       </div>
-      <footer>
-        <span>desenvolvido por <span class="signature"> igor wessel</span></span>
-        <a href="https://github.com/igorwessel" target="blank"><img src="assets/images/GitHub-Mark-Light-32px.png" alt="github-logo" width="100%"></a>
-        <a href="https://twitter.com/igor_wessel" target="blank"><img src="assets/images/Twitter_Social_Icon_Circle_White.png" alt="twitter-logo" width="100%"></a>
-      </footer>
+      <div class="header-logo-typography">
+        <div class="header-logo-img">
+          <img src="./assets/images/heartdev-logo-white.png" alt="heartdev-logo">
+        </div>
+        <h1>Planilha de Freelas</h1>
+      </div>
+    </header>
+    <main>
+      <div class="main-actions-container">
+        <div class="main-buttons-container">
+          <button id="btn-open-modal-features" class="btn">Adicionar</button>
+          <button id="btn-remove-feature" class="btn">Apagar</button>
+          <button id="btn-import-features" class="btn">
+            Importar
+            <input type="file" name="import-features" id="import-features" style="display: none;">
+          </button>
+          <button id="btn-export-feature" class="btn">Exportar</button>
+        </div>
+      </div>
+      <div class="main-input">
+        <div class="main-input-container">
+          <span>Valor hora</span>
+          <span>R$<input type="text" id='main-input-value-per-hour' onkeypress="return isNumber(event)"></span>
+        </div>
+      </div>
+      <div class="main-list-features">
+        <table>
+          <caption>Lista de desenvolvimento</caption>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Hora Dev</th>
+              <th>Hora Teste</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody id="main-list-features-table-body">
+          </tbody>
+        </table>
+      </div>
+      <div class="main-card-resume">
+        <h2>Resumo</h2>
+        <ul>
+          <li>Total Dev: </li>
+          <li>Total Teste: </li>
+          <li>Valor Total: </li>
+        </ul>
+      </div>
+    </main>
+    <div class="modal-add-feature">
+      <div class="modal-feature-content">
+        <form id="modal-feature-form" name="modal-feature-form">
+          <h3>Adicionar Funcionalidade</h3>
+          <label for="input-feature">Funcionalidade</label>
+          <input type="text" id="input-feature" name="feature">
+          <label for="input-dev-time">Horas Dev</label>
+          <input type="text" id="input-dev-time" name="devHours" onkeypress="return isNumber(event)">
+          <label for="input-test-time">Horas Teste</label>
+          <input type="text" id="input-test-time" name="testHours" onkeypress="return isNumber(event)">
+          <button id="btn-add-feature" type="submit">Adicionar</button>
+        </form>
+      </div>
     </div>
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.1.0/anime.min.js"></script>
-  <script src="assets/js/animation.js"></script>
-  <script src="assets/js/main.js"></script>
+    <footer>
+      <span>desenvolvido por <span class="signature"> igor wessel</span></span>
+      <a href="https://github.com/igorwessel" target="blank"><img src="assets/images/GitHub-Mark-Light-32px.png"
+          alt="github-logo" width="100%"></a>
+      <a href="https://twitter.com/igor_wessel" target="blank"><img
+          src="assets/images/Twitter_Social_Icon_Circle_White.png" alt="twitter-logo" width="100%"></a>
+    </footer>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.1.0/anime.min.js"></script>
+<script src="assets/js/animation.js"></script>
+<script src="assets/js/main.js"></script>
+
 </html>

@@ -12,7 +12,7 @@ logo.add({
     duration: 500,
     delay: 850
   },
-  delay: function(el, i) { return i * 250 },
+  delay: function (el, i) { return i * 250 },
   direction: 'normal'
 }).add({
   targets: '.header-logo-path path',
@@ -20,9 +20,13 @@ logo.add({
 }).add({
   targets: '.header-logo-path svg',
   width: '60px'
-}, 1500 ).add({
+}, 1500).add({
   targets: 'header',
-  backgroundColor: '#9163cc'
+  backgroundColor: '#9163cc',
+  begin: () => {
+    document.querySelector('main').style.display = 'grid'
+    document.querySelector('footer').style.display = 'flex'
+  }
 }, '-=600').add({
   targets: '.header-logo-typography',
   width: '100%',
@@ -49,7 +53,7 @@ anime({
 
 const headerHeartTypography = document.querySelector('.header-logo-img img')
 
-const scale = (element,scale, duration) => {
+const scale = (element, scale, duration) => {
   anime.remove(element)
   anime({
     targets: element,
