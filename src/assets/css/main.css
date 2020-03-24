@@ -231,8 +231,24 @@ main {
 
 .modal-feature-content form input {
     outline: none;
+    border: 1px solid var(--border-grey-opacity-50);
+    color: var(--purple-dark);
     padding: 5px;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid var(--border-grey-opacity-50);
+  -webkit-text-fill-color: black;
+}
+
 
 .modal-feature-content form button {
     padding: 10px;

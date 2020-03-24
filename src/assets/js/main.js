@@ -30,20 +30,31 @@ const createRowTable = (data) => {
   `
 }
 
+// Provisional measure, I will be changing.
+let dev = 0;
+let test = 0;
+
 // Listening SUBMIT event in form add new feature .
 form.addEventListener('submit', e => {
   e.preventDefault() // prevent page refresh when user submit form.
   let formData = new FormData(form) // create obj formData with keys = atribbute name in form
   let feature = {}
   formData.forEach((value, key) => {
-    feature[key] = value // insert inside feature, key = atribbuto name in html and values = user input.
+    feature[key] = parseInt(value) ? parseInt(value) : value // insert inside feature, key = atribbuto name in html and values = user input.
   })
 
+  dev += feature.devHours
+  test += feature.testHours
+  // sum += calcFeature(dev, test)
+
+  document.querySelector('#total-dev').innerHTML = dev
+  document.querySelector('#total-test').innerHTML = test
+  document.querySelector('#total-sum-value').innerHTML = `R$${calcFeature(dev, test)}`
   features.push(feature) // add the feature.
   featuresTableBody.insertAdjacentHTML('beforeend', createRowTable(feature))
 })
 
-
+// modal event when user click in add feature.
 btnOpenModal.addEventListener('click', () => {
   modalAddFeature.style.display = 'block'
 })
@@ -53,6 +64,13 @@ window.onclick = function (event) {
     modalAddFeature.style.display = "none";
   }
 }
+
+// event change in input
+valuePerHour.addEventListener('change', (event) => {
+  document.querySelectorAll('tbody tr td:nth-of-type(4n)').forEach( (element, index) => {
+    element.innerHTML = `R$${calcFeature(features[index + 1].devHours, features[index + 1].testHours)}`
+  })
+})
 
 // utils functions
 function isNumber(event) {
