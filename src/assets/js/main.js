@@ -15,13 +15,16 @@ let totDev = 0
 let totTest = 0
 
 
-const refreshWithData = (obj) => {
-  if (obj) {
-    obj = JSON.parse(obj)
-    features.push(...obj)
-    console.log(features)
+const refreshWithData = (file) => {
+  if (file) {
+    file = JSON.parse(file)
+    for (feature of file) {
+      totDev += feature.devHours
+      totTest += feature.testHours
+      featuresTableBody.insertAdjacentHTML('beforeend', createRowTable(feature))
+    }
+    features.push(...file)
   }
-
   document.querySelector('#total-features').innerHTML = features.length
   document.querySelector('#total-dev').innerHTML = totDev
   document.querySelector('#total-test').innerHTML = totTest
@@ -59,7 +62,6 @@ form.addEventListener('submit', e => {
   totTest += feature.testHours
 
   refreshWithData()
-
   featuresTableBody.insertAdjacentHTML('beforeend', createRowTable(feature))
 })
 
