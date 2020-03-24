@@ -1,6 +1,7 @@
 const modalAddFeature = document.querySelector('.modal-add-feature')
 const btnOpenModal = document.querySelector('#btn-open-modal-features')
-const btnExportJson = document.querySelector('#btn-export-feature')
+const btnExportJSON = document.querySelector('#btn-export-features')
+const btnImportJSON = document.querySelector('#btn-import-features')
 const valuePerHour = document.querySelector('#main-input-value-per-hour')
 const featuresTableBody = document.querySelector('#main-list-features-table-body')
 const form = document.querySelector('#modal-feature-form')
@@ -13,6 +14,19 @@ totDev receive all testHours sum in features
 let totDev = 0
 let totTest = 0
 
+
+const refreshWithData = (obj) => {
+  if (obj) {
+    obj = JSON.parse(obj)
+    features.push(...obj)
+    console.log(features)
+  }
+
+  document.querySelector('#total-features').innerHTML = features.length
+  document.querySelector('#total-dev').innerHTML = totDev
+  document.querySelector('#total-test').innerHTML = totTest
+  document.querySelector('#total-sum-value').innerHTML = `R$${calcFeature(totDev, totTest)}`
+}
 
 const calcFeature = (devHours, testHours) => {
   let valuePerHourText = valuePerHour.value
@@ -43,10 +57,9 @@ form.addEventListener('submit', e => {
   features.push(feature) // add the feature.
   totDev += feature.devHours
   totTest += feature.testHours
-  document.querySelector('#total-features').innerHTML = features.length
-  document.querySelector('#total-dev').innerHTML = totDev
-  document.querySelector('#total-test').innerHTML = totTest
-  document.querySelector('#total-sum-value').innerHTML = `R$${calcFeature(totDev, totTest)}`
+
+  refreshWithData()
+
   featuresTableBody.insertAdjacentHTML('beforeend', createRowTable(feature))
 })
 
@@ -71,7 +84,7 @@ valuePerHour.addEventListener('change', (event) => {
 
 // btn events
 
-btnExportJson.addEventListener('click', (e) => {
+btnExportJSON.addEventListener('click', e => {
   if (features.length === 0) {
     alert('Não adicionou nenhuma feature.')
     return
@@ -85,6 +98,30 @@ btnExportJson.addEventListener('click', (e) => {
   link.setAttribute('download', 'features.json')
   link.click()
 })
+
+btnImportJSON.addEventListener('click', e => {
+  document.querySelector('#import-features').click()
+})
+
+const handleFiles = (file) => {
+  let reader = new FileReader()
+  let data;
+  reader.readAsText(file[0])
+  reader.onloadend = () => {
+    data = reader.result
+    let testHaveBracket = data.match(/^[[]/gm)
+    let testObjectFeature = data.match(/{\s+"feature":\s"\w+"/gm)
+    let testObjectNumber = data.match(/\s+"(devHours|testHours)":\s\d+/gm)
+    let testObject = data.match(/{\s+"feature":.*\s+"devHours":.*\s+"testHours".+\s+}/gm)
+
+    if (testHaveBracket && testObjectFeature && testObjectNumber && testObject) {
+      refreshWithData(data)
+    } else {
+      alert('Esse arquivo não atende o padrão.')
+      return
+    }
+  }
+}
 
 // utils functions
 function isNumber(event) {

@@ -69,12 +69,13 @@
       <div class="main-actions-container">
         <div class="main-buttons-container">
           <button id="btn-open-modal-features" class="btn">Adicionar</button>
-          <button id="btn-remove-feature" class="btn">Apagar</button>
+          <button id="btn-remove-features" class="btn">Apagar</button>
           <button id="btn-import-features" class="btn">
             Importar
-            <input type="file" name="import-features" id="import-features" style="display: none;">
+            <input type="file" name="import-features" id="import-features" style="display: none;"
+              onchange="handleFiles(this.files)">
           </button>
-          <button id="btn-export-feature" class="btn">Exportar</button>
+          <button id="btn-export-features" class="btn">Exportar</button>
         </div>
       </div>
       <div class="main-input">
