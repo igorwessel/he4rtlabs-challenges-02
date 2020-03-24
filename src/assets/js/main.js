@@ -1,16 +1,18 @@
 const modalAddFeature = document.querySelector('.modal-add-feature')
 const btnOpenModal = document.querySelector('#btn-open-modal-features')
+const btnExportJson = document.querySelector('#btn-export-feature')
 const valuePerHour = document.querySelector('#main-input-value-per-hour')
 const featuresTableBody = document.querySelector('#main-list-features-table-body')
 const form = document.querySelector('#modal-feature-form')
+let features = []
 
-let features = [
-  {
-    feature: "Authentication",
-    devHours: 10,
-    testHours: 2
-  }
-];
+/* Provisional measure, I will be changing
+totDev receive all devHours sum in features 
+totDev receive all testHours sum in features 
+*/
+let totDev = 0
+let totTest = 0
+
 
 const calcFeature = (devHours, testHours) => {
   let valuePerHourText = valuePerHour.value
@@ -30,10 +32,6 @@ const createRowTable = (data) => {
   `
 }
 
-// Provisional measure, I will be changing.
-let dev = 0;
-let test = 0;
-
 // Listening SUBMIT event in form add new feature .
 form.addEventListener('submit', e => {
   e.preventDefault() // prevent page refresh when user submit form.
@@ -42,15 +40,13 @@ form.addEventListener('submit', e => {
   formData.forEach((value, key) => {
     feature[key] = parseInt(value) ? parseInt(value) : value // insert inside feature, key = atribbuto name in html and values = user input.
   })
-
-  dev += feature.devHours
-  test += feature.testHours
-  // sum += calcFeature(dev, test)
-
-  document.querySelector('#total-dev').innerHTML = dev
-  document.querySelector('#total-test').innerHTML = test
-  document.querySelector('#total-sum-value').innerHTML = `R$${calcFeature(dev, test)}`
   features.push(feature) // add the feature.
+  totDev += feature.devHours
+  totTest += feature.testHours
+  document.querySelector('#total-features').innerHTML = features.length
+  document.querySelector('#total-dev').innerHTML = totDev
+  document.querySelector('#total-test').innerHTML = totTest
+  document.querySelector('#total-sum-value').innerHTML = `R$${calcFeature(totDev, totTest)}`
   featuresTableBody.insertAdjacentHTML('beforeend', createRowTable(feature))
 })
 
@@ -67,9 +63,27 @@ window.onclick = function (event) {
 
 // event change in input
 valuePerHour.addEventListener('change', (event) => {
-  document.querySelectorAll('tbody tr td:nth-of-type(4n)').forEach( (element, index) => {
-    element.innerHTML = `R$${calcFeature(features[index + 1].devHours, features[index + 1].testHours)}`
+  document.querySelectorAll('tbody tr td:nth-of-type(4n)').forEach((element, index) => {
+    element.innerHTML = `R$${calcFeature(features[index].devHours, features[index].testHours)}`
   })
+  document.querySelector('#total-sum-value').innerHTML = `R$${calcFeature(totDev, totTest)}`
+})
+
+// btn events
+
+btnExportJson.addEventListener('click', (e) => {
+  if (features.length === 0) {
+    alert('Não adicionou nenhuma feature.')
+    return
+  }
+
+  let data = JSON.stringify(features, null, 2)
+  let url = 'data:application/json;charset=utf-8,' + encodeURIComponent(data)
+
+  let link = document.createElement('a')
+  link.setAttribute('href', url)
+  link.setAttribute('download', 'features.json')
+  link.click()
 })
 
 // utils functions
