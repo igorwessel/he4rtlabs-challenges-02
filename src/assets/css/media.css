@@ -1,0 +1,21 @@
+@media (max-width: 432px){
+    main {
+        grid-template-rows: 100px 100px 1fr;
+        grid-template-areas: 
+        'actions actions'
+        'input input'
+        'list-features list-features'
+        'resume resume';
+    }
+
+    .header-logo-img {
+        display: none;
+    }
+    
+}
+
+@media (max-width: 320px) {
+    .modal-feature-content{
+        max-width: 200px;
+    }
+}

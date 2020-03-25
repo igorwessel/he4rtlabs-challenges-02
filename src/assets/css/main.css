@@ -34,6 +34,7 @@ header {
 }
 
 .header-logo-path svg{
+    min-width: 60px;
     max-width: 100%;
 }
 
@@ -166,6 +167,8 @@ main {
 
 .main-list-features {
     grid-area: list-features;
+    max-height: 631px;
+    overflow: auto;
     color: var(--purple-dark);
     border: 2px solid var(--border-grey-opacity-50);
 }
@@ -190,14 +193,28 @@ main {
 }
 
 .main-list-features table tbody tr td {
-    padding: 10px;
+    padding: 4% 3%;
 }
 
 .main-list-features table tbody tr:nth-of-type(2n){
     background-color: rgba(128, 128, 128, 0.171);
 }
 
-/* Modal add-feature */
+/* scroll style */
+
+.main-list-features::-webkit-scrollbar {
+    display: block;
+    width: 5px;
+    height: 10px;
+}
+
+.main-list-features::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: rgba(43, 43, 43, 0.521);
+}
+
+
+/* Modals */
 
 .modal-add-feature {
     display: none; 

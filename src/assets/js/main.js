@@ -4,6 +4,7 @@ const btnExportJSON = document.querySelector('#btn-export-features')
 const btnImportJSON = document.querySelector('#btn-import-features')
 const valuePerHour = document.querySelector('#main-input-value-per-hour')
 const featuresTableBody = document.querySelector('#main-list-features-table-body')
+const featuresTableRows = document.querySelectorAll('#main-list-features-table-body td')
 const form = document.querySelector('#modal-feature-form')
 let features = []
 
