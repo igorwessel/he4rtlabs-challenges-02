@@ -14,7 +14,7 @@ totDev receive all testHours sum in features
 */
 let totDev = 0
 let totTest = 0
-
+let counter = 0
 
 const refreshWithData = (file) => {
   if (file) {
@@ -40,8 +40,9 @@ const calcFeature = (devHours, testHours) => {
 }
 
 const createRowTable = (data) => {
+  counter += 1
   return `
-  <tr>
+  <tr draggable="true" feature_id=${counter - 1}>
     <td>${data.feature}</td>
     <td>${data.devHours}</td>
     <td>${data.testHours}</td>
@@ -64,6 +65,47 @@ form.addEventListener('submit', e => {
 
   refreshWithData()
   featuresTableBody.insertAdjacentHTML('beforeend', createRowTable(feature))
+})
+
+
+// Listening drag event
+let dragged;
+document.querySelector('tbody').addEventListener('dragstart', e => {
+  dragged = e.target
+  console.log(dragged)
+})
+
+
+
+document.addEventListener('dragend', e => {
+  e.target.style.opacity = "";
+})
+
+document.addEventListener('dragover', e => {
+  // prevent default to allow drop
+  e.preventDefault();
+});
+
+document.addEventListener('dragenter', e => {
+  // highlight potential drop target when the draggable element enters it
+  if (e.target.className == "dropzone") {
+    e.target.style.background = "purple";
+  }
+});
+
+document.addEventListener('dragleave', e => {
+  if (e.target.className == "dropzone") {
+    e.target.style.background = "";
+  }
+})
+
+document.addEventListener('drop', e => {
+  if (e.target.className == "dropzone") {
+    features = features.filter((feature, index) => {
+      return dragged.children[0].innerText !== feature['feature']
+    })
+    dragged.remove()
+  }
 })
 
 // modal event when user click in add feature.
@@ -113,7 +155,7 @@ const handleFiles = (file) => {
   reader.onloadend = () => {
     data = reader.result
     let testHaveBracket = data.match(/^[[]/gm)
-    let testObjectFeature = data.match(/{\s+"feature":\s"\w+"/gm)
+    let testObjectFeature = data.match(/{\s+"feature":\s".*"/gm)
     let testObjectNumber = data.match(/\s+"(devHours|testHours)":\s\d+/gm)
     let testObject = data.match(/{\s+"feature":.*\s+"devHours":.*\s+"testHours".+\s+}/gm)
 
